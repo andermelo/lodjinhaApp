@@ -38,7 +38,7 @@ depois:
 ## License
 
 ```
-developed App by 2020 Anderson Melo, design and API by B2W 
+2020 - App developed by Anderson Melo, design and API developed by B2W 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
