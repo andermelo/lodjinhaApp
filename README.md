@@ -1,7 +1,7 @@
 <h1 align="center">Lodjinha App</h1></br>
 <p align="center">  
-Demo de um e-commerce utilizando Flutter.<br>
-  Está incluido as novas lib de <a href="https://pub.dev/packages/animations">animações</a> lançadas no <a href="https://medium.com/flutter/announcing-flutter-1-17-4182d8af7f8e">Flutter 1.17.0</a> e muito mais. 
+Demo e-commerce utilizando Flutter.<br>
+  Está incluso nova lib de <a href="https://pub.dev/packages/animations">animações</a> lançada com <a href="https://medium.com/flutter/announcing-flutter-1-17-4182d8af7f8e">Flutter 1.17.0</a> e muito mais. 
 </p>
 </br>
 
