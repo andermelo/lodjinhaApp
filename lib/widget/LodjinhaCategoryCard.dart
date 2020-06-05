@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'LodjinhaInkWellOverley.dart';
 
@@ -26,8 +27,13 @@ class LodjinhaCategoryCard extends StatelessWidget {
             color: Colors.black38,
             //height: 150,
             child: Center(
-              child: urlImg != null ? Image.network(urlImg,width: 100, fit: BoxFit.fill,) 
-              : Image.asset('assets/placeholder_image.png', width:100, fit: BoxFit.fill,),
+              child: CachedNetworkImage(
+                imageUrl: urlImg,
+                width: 100.0,
+                fit: BoxFit.fill,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
             ),
           ),
           Expanded(

@@ -69,13 +69,29 @@ mixin _$HomeStore on _HomeStore, Store {
     });
   }
 
+  final _$productForIdAtom = Atom(name: '_HomeStore.productForId');
+
+  @override
+  ProductModel get productForId {
+    _$productForIdAtom.reportRead();
+    return super.productForId;
+  }
+
+  @override
+  set productForId(ProductModel value) {
+    _$productForIdAtom.reportWrite(value, super.productForId, () {
+      super.productForId = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 listaBanner: ${listaBanner},
 listaCategoria: ${listaCategoria},
 listaMaisVendido: ${listaMaisVendido},
-current: ${current}
+current: ${current},
+productForId: ${productForId}
     ''';
   }
 }

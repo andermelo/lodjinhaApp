@@ -6,7 +6,7 @@ class ProductModel {
   int id;
   String name;
   int priceOf;
-  int priceFor;
+  double priceFor;
   String urlImage;
 
 ProductModel({
@@ -26,7 +26,7 @@ ProductModel.fromJson(Map json)
         name = json['nome'],
         priceOf = json['precoDe'],
         priceFor = json['precoPor'],
-        urlImage = json['urlImage'];
+        urlImage = json['urlImagem'];
 
         Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

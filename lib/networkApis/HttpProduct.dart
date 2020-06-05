@@ -28,5 +28,24 @@ class HttpProduct {
     return resultados;
   }
 
+  Future<ProductModel> getProductId(int id) async {
+    ProductModel resultados;
+    _url += "/produto/$id";
+
+    GenericHttpRequest httpRequest = new GenericHttpRequest();
+    httpRequest.setUrl(_url);
+
+    var result = await httpRequest.invokeGetIterable();
+    if (result.code == 200) {
+      // Iterable map = result.body;
+      // var map = result.body;
+      Map<String, dynamic> map = result.body;
+      //List<dynamic> data = map["data"];
+      resultados = ProductModel.fromJson(map);
+    }
+
+    return resultados;
+  }
+
   
 }

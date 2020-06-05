@@ -20,7 +20,7 @@ class ItemCategoryPresenter {
           padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0, bottom: 8.0),
           child: LodjinhaOpenContainerWrapper(
             transitionType: _transitionType,
-            containerWhrapper: ItemDetailScreen(),
+            containerWhrapper: ItemDetailScreen(1),
             closedBuilder: (BuildContext _, VoidCallback openContainer) {
               return LodjinhaSingleTile(openContainer: openContainer);
             },

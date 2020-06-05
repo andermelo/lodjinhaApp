@@ -1,9 +1,9 @@
 import 'package:animations/animations.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:lodjinha/model/CategoryModel.dart';
-import 'package:lodjinha/model/ProductModel.dart';
+import 'package:html/parser.dart';
 import 'package:lodjinha/screen/ItemCategoryscreen.dart';
 import 'package:lodjinha/screen/ItemDetailScreen.dart';
 import 'package:lodjinha/store/HomeStore.dart';
@@ -21,6 +21,13 @@ class HomePresenter {
   void loadCategory() {
     _homeStore.listarCategory();
   }
+
+  String _parseHtmlString(String htmlString) {
+    var document = parse(htmlString);
+    String parsedString = parse(document.body.text).documentElement.text;
+    return parsedString;
+  }
+
 
   Widget imageSliders(BuildContext context) {
 
@@ -95,9 +102,9 @@ class HomePresenter {
     ContainerTransitionType _transitionType = ContainerTransitionType.fade;
     _homeStore.listarBestSeller();
     return Observer(builder: (_) {
-      if (_homeStore.listaCategoria.length > 0) {
+      if (_homeStore.listaMaisVendido.length > 0) {
         return ListView.builder(
-          itemCount: _homeStore.listaCategoria.length,
+          itemCount: _homeStore.listaMaisVendido.length,
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
@@ -107,9 +114,14 @@ class HomePresenter {
                   left: 16.0, right: 16.0, top: 8.0, bottom: 8.0),
               child: LodjinhaOpenContainerWrapper(
                 transitionType: _transitionType,
-                containerWhrapper: ItemDetailScreen(),
+                containerWhrapper: ItemDetailScreen(_homeStore.listaMaisVendido[index].id),
                 closedBuilder: (BuildContext _, VoidCallback openContainer) {
-                  return LodjinhaSingleTile(openContainer: openContainer);
+                  return LodjinhaSingleTile(
+                    openContainer: openContainer,
+                    title: _homeStore.listaMaisVendido[index].name,
+                    urlImg: _homeStore.listaMaisVendido[index].urlImage,
+                    priceOf: _homeStore.listaMaisVendido[index].priceOf.toString(),
+                    priceFor: _homeStore.listaMaisVendido[index].priceFor.toString(),);
                 },
               ),
             );
@@ -158,4 +170,56 @@ class HomePresenter {
       }
     });
   }
+
+  Widget detailImg(BuildContext context, int id){
+    _homeStore.getProdutcId(id);
+    return Observer(builder: (_){
+      if(_homeStore.productForId != null){
+        return CachedNetworkImage(
+                imageUrl: _homeStore.productForId.urlImage,
+                width: 75.0,
+                fit: BoxFit.fill,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+                );
+      }else{
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    });
+  }
+
+  Widget detailTexts(BuildContext context, int id){
+    _homeStore.getProdutcId(id);
+    return Observer(builder: (_){
+      if (_homeStore.productForId != null) {
+        return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(_homeStore.productForId.name,style: Theme.of(context).textTheme.headline2),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children:[
+                      Text("De: " + _homeStore.productForId.priceOf.toString(),style: Theme.of(context).textTheme.headline4),
+                      Text("Por " + _homeStore.productForId.priceFor.toString(),style: Theme.of(context).textTheme.headline3)
+                    ]
+                  ),
+                  Divider(),
+                  SizedBox(height: 20.0,),
+                  Text("Descrição", style: Theme.of(context).textTheme.subtitle1),
+                  SizedBox(height: 35.0,),
+                  Text(_parseHtmlString(_homeStore.productForId.des), style: Theme.of(context).textTheme.bodyText1),
+                  SizedBox(height: 60.0,)
+                ]
+              );
+      }else {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    });
+  } 
+
 }

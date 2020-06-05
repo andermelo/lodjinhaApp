@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lodjinha/constant/LodjinhaColors.dart';
-import 'package:lodjinha/constant/LodjinhaStrings.dart';
-import 'package:html/parser.dart';
+import 'package:lodjinha/presenter/HomePresenter.dart';
 
 class ItemDetailScreen extends StatelessWidget {
-  //static const String id = 'item_detail_screen';
+  ItemDetailScreen(this.id);
+  final int id;
 
-  String _parseHtmlString(String htmlString) {
-    var document = parse(htmlString);
-    String parsedString = parse(document.body.text).documentElement.text;
-    return parsedString;
-  }
+  HomePresenter _homePresenter = new HomePresenter();
 
   @override
   Widget build(BuildContext context) {
@@ -23,33 +19,14 @@ class ItemDetailScreen extends StatelessWidget {
             pinned:true,
             flexibleSpace: FlexibleSpaceBar(
               //title:Text("Produto nome"),
-              background: Image.asset('assets/placeholder_image.png',fit: BoxFit.cover,)
+              background: _homePresenter.detailImg(context,id),
             )
           ),
           SliverFillRemaining(
             hasScrollBody: false,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Nome do produto com uma descrição grandona",style: Theme.of(context).textTheme.headline2),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:[
-                      Text("De: 9999,99",style: Theme.of(context).textTheme.headline4),
-                      Text("Por 9999,98",style: Theme.of(context).textTheme.headline3)
-                    ]
-                  ),
-                  Divider(),
-                  SizedBox(height: 20.0,),
-                  Text("Descrição", style: Theme.of(context).textTheme.subtitle1),
-                  SizedBox(height: 35.0,),
-                  Text(_parseHtmlString(LodjinhaStrings.textoTest), style: Theme.of(context).textTheme.bodyText1),
-                  SizedBox(height: 60.0,)
-                ]
-              ),
+              child: _homePresenter.detailTexts(context, id),
             )
           )
         ] ,

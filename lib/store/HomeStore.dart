@@ -25,6 +25,9 @@ abstract class _HomeStore with Store{
   @observable
   int current = 0;
 
+  @observable
+  ProductModel productForId;
+
   // Banner Home
 
   Future<ResBanner> bannerFetch() async {
@@ -73,6 +76,19 @@ abstract class _HomeStore with Store{
   void listarBestSeller() {
     bestSellerFetch().then((onValue) {
       listaMaisVendido = ObservableList.of(onValue.data);
+    });
+  }
+
+  // Produto por id
+
+  Future<ProductModel> productIdFetch(int id) async {
+    HttpProduct _httpProduct = new HttpProduct();
+    return await _httpProduct.getProductId(id);
+  }
+  
+  void getProdutcId(int id) {
+    productIdFetch(id).then((onValue) {
+      productForId = onValue;
     });
   }
 
