@@ -6,7 +6,7 @@ Demo e-commerce utilizando Flutter.<br>
 </br>
 
 <p align="center">
-  <a href="https://opensource.org/licenses/MIT"><img alt="license" src="https://img.shields.io/apm/l/vim-mode"></a> 
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a> 
 </p>
 
 ![image app](#)
