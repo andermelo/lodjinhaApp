@@ -12,13 +12,16 @@ Demo e-commerce utilizando Flutter.<br>
 
 ![image app](#)
 
+
 ## Recursos utilizados
   * [Animations](https://pub.dev/packages/animations)
   * [carousel_slider](https://pub.dev/packages/carousel_slider)
   * [google_fonts](#)
+  * [cached_network_image](#)
   * [mobx](#)
   * [flutter_mobx](#)
   * [Drawer](https://flutter.dev/docs/cookbook/design/drawer)
+  
 
 ## Como executar o projeto
 

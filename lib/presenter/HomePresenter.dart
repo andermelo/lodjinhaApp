@@ -14,14 +14,6 @@ import 'package:lodjinha/widget/LodjinhaSingleTile.dart';
 class HomePresenter {
   HomeStore _homeStore = new HomeStore();
 
-  void loadSlider() {
-    _homeStore.listarBanners();
-  }
-
-  void loadCategory() {
-    _homeStore.listarCategory();
-  }
-
   String _parseHtmlString(String htmlString) {
     var document = parse(htmlString);
     String parsedString = parse(document.body.text).documentElement.text;
@@ -151,7 +143,7 @@ class HomePresenter {
                   left: 4.0, right: 8.0, top: 8.0, bottom: 8.0),
               child: LodjinhaOpenContainerWrapper(
                 transitionType: _transitionType,
-                containerWhrapper: ItemCategoryScreen(),
+                containerWhrapper: ItemCategoryScreen(_homeStore.listaCategoria[index].id,_homeStore.listaCategoria[index].des ),
                 closedBuilder: (BuildContext _, VoidCallback openContainer) {
                   return LodjinhaCategoryCard(
                     openContainer: openContainer,

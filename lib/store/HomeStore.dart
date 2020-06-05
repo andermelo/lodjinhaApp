@@ -21,6 +21,7 @@ abstract class _HomeStore with Store{
   
   @observable
   ObservableList<ProductModel> listaMaisVendido = new ObservableList<ProductModel>();
+
   
   @observable
   int current = 0;
@@ -91,5 +92,5 @@ abstract class _HomeStore with Store{
       productForId = onValue;
     });
   }
-
+ 
 }

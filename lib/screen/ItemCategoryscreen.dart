@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lodjinha/model/CategoryModel.dart';
-import 'package:lodjinha/model/ProductModel.dart';
 import 'package:lodjinha/presenter/ItemCategoryPresenter.dart';
 
 class ItemCategoryScreen extends StatefulWidget {
+
+  ItemCategoryScreen(this.id, this.nameCat);
+  final int id;
+  final String nameCat;
 
   @override
   _ItemCategoryScreenState createState() => _ItemCategoryScreenState();
@@ -11,28 +13,14 @@ class ItemCategoryScreen extends StatefulWidget {
 
 class _ItemCategoryScreenState extends State<ItemCategoryScreen> {
 
-  final List<ProductModel> productList = new List<ProductModel>();
-  final List<CategoryModel> categoryList = new List<CategoryModel>();
   ItemCategoryPresenter categoryPresenter = new ItemCategoryPresenter();
-  CategoryModel category = new CategoryModel();
 
-  
-
-  @override
-  void initState() {
-    category = CategoryModel(id:1,des:"Descrição",urlImage:"urlImage");
-    for (var i = 0; i < 6; i++) {
-      productList.add(ProductModel(categoryModel: category,));
-      categoryList.add(CategoryModel(id: 0,des:"Descrição", urlImage:"urlImage"));
-    }
-    super.initState();
-  }
-  
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:Text("Name category")),
-      body:categoryPresenter.LodjinhaListView(context, productList)
+      appBar: AppBar(title:Text(widget.nameCat)),
+      body:categoryPresenter.LodjinhaListView(context, widget.id)
     );
   }
 }
