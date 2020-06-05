@@ -9,7 +9,11 @@ Demo e-commerce utilizando Flutter.<br>
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a> 
 </p>
 
-![image app](#)
+<p align="center">
+<img src="/preview/preview1.gif" width="32%"/>
+<img src="/preview/preview2.gif" width="32%"/>
+<img src="/preview/preview3.gif" width="32%"/>
+</p>
 
 
 ## Recursos utilizados
