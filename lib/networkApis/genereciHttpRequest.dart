@@ -4,8 +4,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 
-import 'package:lodjinha/model/BannerModel.dart';
-
 class GenericHttpRequest {
   dynamic _body;
   dynamic _header;
