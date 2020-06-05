@@ -35,7 +35,15 @@ class HomePresenter {
                       //borderRadius: BorderRadius.all(Radius.circular(5.0)),
                       child: Stack(
                     children: <Widget>[
-                      Image.network(item.linkUrl, fit: BoxFit.cover, width: 500.0,height: 330.0,),
+                      //Image.network(item.linkUrl, fit: BoxFit.cover, width: 500.0,height: 330.0,),
+                      CachedNetworkImage(
+                        imageUrl: item.linkUrl,
+                        width: 500.0,
+                        height: 330.0,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      )
                     ],
                   )),
                 ),

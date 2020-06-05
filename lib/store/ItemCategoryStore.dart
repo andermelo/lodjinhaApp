@@ -1,6 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:lodjinha/model/ProductModel.dart';
 import 'package:lodjinha/networkApis/HttpProduct.dart';
 import 'package:mobx/mobx.dart';
