@@ -170,7 +170,7 @@ class HomePresenter {
         return CachedNetworkImage(
                 imageUrl: _homeStore.productForId.urlImage,
                 width: 75.0,
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
                 placeholder: (context, url) => CircularProgressIndicator(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
                 );
