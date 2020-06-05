@@ -5,16 +5,19 @@ class LodjinhaCategoryCard extends StatelessWidget {
   const LodjinhaCategoryCard({
     this.openContainer,
     this.subtitle,
+    this.urlImg
   });
 
   final VoidCallback openContainer;
   final String subtitle;
+  final String urlImg;
 
   @override
   Widget build(BuildContext context) {
     return LodjinhaInkWellOverlay(
       openContainer: openContainer,
       // height: 225,
+      width: 130.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +26,8 @@ class LodjinhaCategoryCard extends StatelessWidget {
             color: Colors.black38,
             //height: 150,
             child: Center(
-              child: Image.asset('assets/placeholder_image.png',width: 100),
+              child: urlImg != null ? Image.network(urlImg,width: 100, fit: BoxFit.fill,) 
+              : Image.asset('assets/placeholder_image.png', width:100, fit: BoxFit.fill,),
             ),
           ),
           Expanded(
@@ -32,7 +36,7 @@ class LodjinhaCategoryCard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('descrição',style: Theme.of(context).textTheme.subtitle2),
+                  Expanded(child: Text(subtitle,style: Theme.of(context).textTheme.subtitle2)),
                 ],
               ),
             ),

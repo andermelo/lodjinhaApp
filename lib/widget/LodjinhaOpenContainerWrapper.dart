@@ -1,6 +1,5 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:lodjinha/screen/ItemDetailScreen.dart';
 
 class LodjinhaOpenContainerWrapper extends StatelessWidget {
   const LodjinhaOpenContainerWrapper({

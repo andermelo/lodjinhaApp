@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           headline5: TextStyle(fontSize: 14.0,color:LodjinhaColors.primaryColorDark,fontWeight: FontWeight.w600,letterSpacing: -0.3),
           headline6: TextStyle(fontSize: 12.0,color:LodjinhaColors.primaryColorDark,fontWeight: FontWeight.w300,letterSpacing: -0.3),
           subtitle1: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-          subtitle2: TextStyle(fontSize: 13.0, fontWeight: FontWeight.normal),
+          subtitle2: TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal),
           bodyText1: TextStyle(fontSize: 17.0, fontWeight: FontWeight.normal,height: 1.3),
         ),
       ),

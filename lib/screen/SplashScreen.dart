@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lodjinha/constant/LodjinhaColors.dart';
 import 'package:lodjinha/constant/LodjinhaStrings.dart';
+import 'package:lodjinha/presenter/HomePresenter.dart';
 import 'package:lodjinha/widget/LodjinhaTextLogo.dart';
 import 'dart:async';
 import 'HomeScreen.dart';
@@ -13,10 +14,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    Timer(Duration(seconds: 2), () {
+    Timer(Duration(seconds: 3), () {
       // Navigator.pushNamed(context, LoginScreen.id);
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomeScreen()));
     });
