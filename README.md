@@ -32,7 +32,6 @@ Demo e-commerce utilizando Flutter.<br>
  git clone https://github.com/andermelo/lodjinhaApp.git
 
  cd lodjinhaApp/
-
 ```
 
 depois:
