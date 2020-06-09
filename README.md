@@ -38,8 +38,10 @@ Demo e-commerce utilizando Flutter.<br>
 depois:
 
 ```
+ flutter pub get
+
  flutter run --release
-```
+ ```
 
 ## License
 
